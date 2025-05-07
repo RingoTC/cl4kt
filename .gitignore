@@ -140,3 +140,6 @@ logs/*
 wandb
 saved_model/*
 run.sh
+
+
+dataset

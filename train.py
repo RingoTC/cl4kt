@@ -10,6 +10,8 @@ from sklearn.metrics import roc_auc_score, accuracy_score, mean_squared_error
 
 if torch.cuda.is_available():
     torch.set_default_tensor_type(torch.cuda.FloatTensor)
+elif torch.backends.mps.is_available():
+    torch.set_default_tensor_type(torch.FloatTensor)
 
 
 def model_train(

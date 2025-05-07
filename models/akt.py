@@ -8,6 +8,8 @@ import torch.nn.functional as F
 
 if torch.cuda.is_available():
     torch.set_default_tensor_type(torch.cuda.FloatTensor)
+elif torch.backends.mps.is_available():
+    torch.set_default_tensor_type(torch.FloatTensor)
 
 
 class AKT(Module):

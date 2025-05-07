@@ -165,7 +165,7 @@ def main(config):
                 DataLoader(test_dataset, batch_size=eval_batch_size)
             )
 
-        n_gpu = torch.cuda.device_count()
+        n_gpu = torch.cuda.device_count() if torch.cuda.is_available() else 0
         if n_gpu > 1:
             model = torch.nn.DataParallel(model).to(device)
         else:
