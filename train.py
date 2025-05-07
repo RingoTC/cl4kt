@@ -187,7 +187,7 @@ def model_train(
         )
     )
 
-    logs_df = logs_df.append(
+    logs_df = logs_df._append(
         pd.DataFrame(
             {"EarlyStopEpoch": best_epoch, "auc": auc, "acc": acc, "rmse": rmse},
             index=[0],

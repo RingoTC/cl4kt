@@ -33,6 +33,22 @@ cl4kt_config:
   temp: 0.05
   hard_negative_weight: 1.0
 
+routerkt_config:
+  embedding_size: 64
+  num_blocks: 2
+  kq_same: True
+  model_type: "routerkt"
+  num_attn_heads: 8
+  final_fc_dim: 512
+  d_ff: 1024
+  l2: 0.1
+  dropout: 0.05
+  separate_qr: False
+  routing_mode: "query_norm"
+  num_selected_heads: 2
+  num_shared_heads: 2
+  balance_loss_weight: 0.001
+
 
 train_config:
   log_wandb_fold: True

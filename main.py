@@ -14,6 +14,7 @@ from data_loaders import (
 )
 from models.akt import AKT
 from models.cl4kt import CL4KT
+from models.routerkt import RouterKT
 from train import model_train
 from sklearn.model_selection import KFold
 from datetime import datetime, timedelta
@@ -93,6 +94,9 @@ def main(config):
             permute_prob = model_config.permute_prob
             replace_prob = model_config.replace_prob
             negative_prob = model_config.negative_prob
+        elif model_name == "routerkt":
+            model_config = config.routerkt_config
+            model = RouterKT(num_skills, num_questions, seq_len, **model_config)
 
         train_users = users[train_ids]
         np.random.shuffle(train_users)
@@ -278,9 +282,12 @@ if __name__ == "__main__":
         cfg.cl4kt_config.negative_prob = args.negative_prob
         cfg.cl4kt_config.dropout = args.dropout
         cfg.cl4kt_config.l2 = args.l2
-    else:  # akt
+    elif args.model_name == "akt":  # akt
         cfg.akt_config.l2 = args.l2
         cfg.akt_config.dropout = args.dropout
+    elif args.model_name == "routerkt":  # routerkt
+        cfg.routerkt_config.l2 = args.l2
+        cfg.routerkt_config.dropout = args.dropout
 
     cfg.freeze()
 
